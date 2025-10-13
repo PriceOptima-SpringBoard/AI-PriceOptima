@@ -1,0 +1,3 @@
+`Python Libraries`- numpy , pandas , matplotlib , seaborn , scipy , Math
+`ML Libraries` - scikit-learn , xgboost , lightgbm , catboost 
+`Deployment` - flask , fastapi , uvicorn , joblib

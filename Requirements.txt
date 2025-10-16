@@ -1,3 +1,19 @@
-`Python Libraries`- numpy , pandas , matplotlib , seaborn , scipy , Math
-`ML Libraries` - scikit-learn , xgboost , lightgbm , catboost 
-`Deployment` - flask , fastapi , uvicorn , joblib
+# Machine Learning Project Requirements
+- Python 3.8+
+- Typical packages (install with pip):
+    - pandas
+    - matplotlib
+    - seaborn
+    - scipy
+    - Math
+    - numpy
+    - scikit-learn
+    - xgboost or lightgbm or catboost 
+    - joblib (for model persistence)
+    - flask or fastapi (for deployment)
+    - uvicorn (for running FastAPI apps)
+
+Example:
+```
+pip install pandas numpy scikit-learn xgboost joblib
+```

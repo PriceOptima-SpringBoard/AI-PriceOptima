@@ -1,6 +1,5 @@
 
 Last Updated: October 15, 2025  
-Branch: `AI_PriceOptima_Poojitha`
 
 Project Overview
 This project focuses on analyzing ride-share pricing data to support dynamic pricing strategies. The goal is to understand how different factors affect ride costs and use that insight to improve revenue, customer experience, and operational efficiency.

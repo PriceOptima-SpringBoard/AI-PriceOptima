@@ -123,7 +123,6 @@ Upcoming work:
 
 ---
 
-### License
-If you plan to open-source this project, add a `LICENSE` file (e.g., MIT or Apache-2.0).
+
 
 

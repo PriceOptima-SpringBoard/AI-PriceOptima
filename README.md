@@ -1,5 +1,5 @@
 
-Last Updated: October 15, 2025  
+Last Updated: October 16, 2025  
 
 Project Overview
 This project focuses on analyzing ride-share pricing data to support dynamic pricing strategies. The goal is to understand how different factors affect ride costs and use that insight to improve revenue, customer experience, and operational efficiency.
@@ -11,7 +11,7 @@ So far, the following tasks have been completed:
 
 Uploaded Files
 
-Date: October 15, 2025  
+Date: October 16, 2025  
 Milestones:
 
 - Milestone 1: `Cleaning_and_Visualization.ipynb`  

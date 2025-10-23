@@ -69,6 +69,24 @@ The notebook includes:
 🧮 *Result Example:*  
 Revenue Lift (Simulated) = **+8.47%**
 
+### ⚙️ Milestone 5: Time-Based and Inventory-Based Pricing Engine
+
+- **Objective:** Enhance the baseline model by adding time-sensitive and demand-sensitive logic.
+- **New Feature:** `Time_of_Booking` (Morning, Afternoon, Evening, Night).
+- **Pricing Logic:**
+  - If booking ratio > 0.5 → +15% price (high demand)
+  - If booking ratio < 0.5 → -10% price (low demand)
+  - Evening/Night → +10% adjustment (peak hours)
+  - Morning/Afternoon → -5% adjustment (off-peak hours)
+- **KPI:** Simulated **Revenue Lift** (%) compared to static pricing.
+- **Visualization:** Compared static vs dynamic total revenue and plotted price trends across time of booking.
+
+📈 *Example Result:*  
+Simulated Revenue Lift (Dynamic vs Static) = **+14.62%**
+
+🧩 *Impact:*  
+This model establishes the foundation for dynamic price optimization using machine learning in upcoming milestones.
+
 
 ### 📊 Tools & Technologies
 | Category | Tools Used |

@@ -59,6 +59,17 @@ The notebook includes:
 
 ---
 
+### 🧩 Milestone 4: Baseline Pricing Engine
+- Developed a simple rule-based pricing engine using Pandas.
+- **Logic:** If booking ratio > 0.5 → increase price by 15%, else decrease by 10%.
+- Compared static and baseline revenues to calculate **Revenue Lift KPI**.
+- Visualized results using Matplotlib bar plots.
+- This baseline serves as a benchmark before implementing ML models.
+
+🧮 *Result Example:*  
+Revenue Lift (Simulated) = **+8.47%**
+
+
 ### 📊 Tools & Technologies
 | Category | Tools Used |
 |-----------|-------------|

@@ -7,7 +7,7 @@ This project focuses on optimizing ride prices using **AI-driven models** to imp
 ## 📘 **Milestones Completed**
 
 Date: 15th Oct
-Uploads:
+*Uploads:*
 
 ### 🧹 **Milestone 1 — Data Cleaning & Visualization**
 - Cleaned and explored ride pricing data  
@@ -30,7 +30,7 @@ Uploads:
 
 ---
 Date: 23th Oct
-Uploads:
+*Uploads:*
 
 ### 💰 **Milestone 4 — Baseline Pricing Engine**
 - Developed a **rule-based pricing engine** using time & inventory adjustments  
@@ -40,11 +40,11 @@ Uploads:
 ---
 
 ## 🛠️ **Tools Used**
-Languages & Libraries:Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn 
-Development Environment: Jupyter Notebook, VS Code
+- Languages & Libraries:Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn 
+- Development Environment: Jupyter Notebook, VS Code
 
 ---
 
 ## 👩‍💻 **About Me**
 **P.N.V.Sahithi**  
-Branch: *AI_PriceOptima_Sahithi*  
+Branch: *AI-Price_Optima-Sahithi*  

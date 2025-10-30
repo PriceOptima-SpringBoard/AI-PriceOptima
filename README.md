@@ -3,7 +3,12 @@
 This project focuses on optimizing ride prices using **AI-driven models** to improve revenue, profit margin, and customer conversion rates.
 
 ---
+Possible KPI's
+Revenue Lift (%) → ((New - Old) / Old) × 100
+Profit Margin (%) → ((Revenue - Cost) / Revenue) × 100
+Conversion Rate (%) → (Completed / Total) × 100
 
+---
 ## 📘 **Milestones Completed**
 
 Date: 15th Oct

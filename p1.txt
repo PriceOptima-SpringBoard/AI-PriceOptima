@@ -1,6 +1,0 @@
-1. Advanced EDA ( check null values, duplicate values, and other data inconsistency )
-2. Basic visualization
-3. Check for outliers with and without boxplot
-4. Check teh correlation using heatmap
-5. check the data linearity using graphs
-6. explain  brief about the dataset

@@ -1,17 +1,88 @@
-# 🧠 AI: PriceOptima
+# 🚖 AI PriceOptima — Dynamic Ride Pricing Analysis
 
-AI PriceOptima is a machine learning–driven dynamic pricing system designed to optimize product prices in real time or periodically. The goal is to maximize revenue, maintain competitiveness, and enhance customer trust through data-driven pricing decisions. The system uses historical sales and inventory data to predict optimal prices using advanced ML techniques, ensuring adaptability, transparency, and profitability.
+AI PriceOptima is a data-driven project built to enhance ride fare prediction using intelligent pricing strategies.  
+The goal is to apply machine learning and analytical insights to achieve better **revenue growth**, **profit optimization**, and **customer satisfaction**.
 
-The project workflow includes several key stages. Data ingestion involves collecting data from the Kaggle Dynamic Pricing Dataset and the Statso Case Study, along with integrating sales and inventory information. Feature engineering focuses on cleaning, aggregating, and generating features such as demand elasticity, seasonality, competitor price index, and inventory health. Model training and evaluation are conducted using algorithms like XGBoost, LightGBM, and optionally Reinforcement Learning, with performance assessed through metrics such as revenue lift, conversion rate, and profit margin. The pricing recommendation engine applies business rules like minimum and maximum thresholds and profit margins to predicted price ranges, ensuring compliance with competitiveness and profitability policies. The serving layer exposes FastAPI endpoints for delivering pricing recommendations, and Docker is used to ensure scalability and portability. Visualization and monitoring are managed through a React.js dashboard with Plotly.js for real-time KPI tracking and actionable insights.
+---
 
-The system architecture can be summarized as:  
-Data Sources → Feature Engineering → Model Training → Pricing Engine → FastAPI Service → React Dashboard.  
+## 📊 Key Performance Indicators (KPIs)
 
-The project uses a modern and scalable tech stack. Data is managed and processed using CSV files or PostgreSQL, along with Python libraries such as Pandas and Dask. Machine learning and analytics are implemented using scikit-learn, XGBoost, LightGBM, and optionally reinforcement learning models. APIs and backend services are powered by FastAPI and containerized using Docker. The frontend visualization is built with React.js and Plotly.js, while logging and monitoring are handled through FastAPI logs and PostgreSQL metrics.
+| KPI | Formula | Purpose |
+|------|----------|----------|
+| **Revenue Lift (%)** | ((Dynamic - Static) / Static) × 100 | Measures gain achieved using AI-based pricing. |
+| **Profit Margin (%)** | ((Revenue - Cost) / Revenue) × 100 | Evaluates efficiency in cost-to-revenue ratio. |
+| **Conversion Rate (%)** | (Completed Rides / Total Rides) × 100 | Indicates how many ride requests were successfully completed. |
 
-The development process is organized into milestones. The first milestone, Requirements and Data Preparation, focuses on defining KPIs, collecting datasets, and validating data availability. The second milestone, Data Ingestion Pipeline, involves building a daily ingestion workflow for sales and inventory data. The third milestone, Exploratory Data Analysis (EDA), identifies demand elasticity and customer segmentation through detailed reports and visualizations. The fourth milestone, Baseline Pricing Engine, implements time- and inventory-based pricing rules for initial comparisons. The fifth milestone, Advanced Model Development, trains and evaluates ML models like XGBoost and LightGBM, validating simulated revenue lift. The final milestone, Deployment and Dashboard Delivery, includes containerizing FastAPI endpoints with Docker, building a React.js dashboard for real-time strategy monitoring, and completing final evaluations with user acceptance testing.
+---
 
-To deploy the project, clone the repository using:
-```bash
-git clone https://github.com/yourusername/AI-PriceOptima.git
-cd AI-PriceOptima
+## 🧩 Milestones Overview
+
+### 🧹 Milestone 1 — Data Preparation & Cleaning
+- Processed and explored the ride dataset for missing and inconsistent values.  
+- Handled outliers and standardized numerical and categorical variables.  
+- Created visualizations like bar charts, scatter plots, and boxplots for trend insights.  
+📁 **Notebook:** `Requirements_and_Data_Preparation.ipynb`
+
+---
+
+### ⚙️ Milestone 2 — Data Ingestion & KPI Computation
+- Designed a **data ingestion workflow** using Pandas for smoother preprocessing.  
+- Introduced automation to handle data updates and consistency checks.  
+- Computed critical KPIs: **Revenue Lift**, **Profit Margin**, and **Conversion Rate**.  
+📁 **Notebook:** `Data_Ingestion_Pipeline.ipynb`
+
+---
+
+### 🔍 Milestone 3 — Exploratory Data Analysis & Feature Engineering
+- Conducted advanced EDA to identify key relationships among variables.  
+- Encoded categorical features and derived new insights.  
+- Applied segmentation combining **Loyalty Status** and **Seasonality** to understand price variation.  
+📁 **Notebook:** `Exploratory_Data_Analysis.ipynb`
+
+---
+
+### 💰 Milestone 4 — Static Baseline Pricing Engine
+- Created a **rule-based pricing system** as a static baseline model.  
+- Integrated **time-based** and **inventory-based** pricing logic.  
+- Compared dynamic pricing outcomes to baseline values using KPIs to analyze uplift.  
+📁 **Notebook:** `Baseline_Pricing_Engine.ipynb`
+
+---
+
+### 🤖 Milestone 5 — Machine Learning Model for Dynamic Pricing
+- Developed predictive models using **Linear Regression**, **XGBoost**, and **LightGBM**.  
+- Trained and tested models to estimate optimized ride prices.  
+- Assessed performance improvement using KPI metrics to validate pricing accuracy.  
+📁 **Notebook:** `Advanced_ML_Model_Development.ipynb`
+
+**Outcome:**  
+The machine learning approach showed measurable improvement in pricing precision and better overall KPI performance compared to the static rule-based model.
+
+---
+
+## 🛠️ Tools and Technologies
+
+| Category | Tools Used |
+|-----------|-------------|
+| **Programming Language** | Python |
+| **Libraries** | Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn · XGBoost · LightGBM |
+| **Environment** | Jupyter Notebook · Visual Studio Code |
+| **Version Control** | Git · GitHub |
+
+---
+
+## 👩‍💻 Author
+
+**Poornima Raj**  
+🎓 Bachelor of Computer Applications (BCA) | Aspiring AI Engineer  
+📧 Email: **pr661138@gmail.com**  
+🌿 Branch: `AI-Price_Optima-Poornima`  
+💬 Passionate about combining analytics and AI to solve real-world pricing and optimization problems.
+
+---
+
+## 🧾 Project Repository Details
+
+**Organization:** [PriceOptima-SpringBoard](https://github.com/PriceOptima-SpringBoard)  
+**Contributors:**    
+- 👩‍💻 Poornima Raj  

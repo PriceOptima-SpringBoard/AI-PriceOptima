@@ -1,3 +1,4 @@
+Data Source: https://www.kaggle.com/datasets/arashnic/dynamic-pricing-dataset/data
 #  **AI PriceOptima — Dynamic Pricing Analysis**
 
 This project focuses on optimizing ride prices using **AI-driven models** to improve revenue, profit margin, and customer conversion rates.

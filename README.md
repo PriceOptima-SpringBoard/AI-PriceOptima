@@ -15,7 +15,11 @@ The tasks completed till now are data cleaning, visualization, feature engineeri
 
 Date: 24th Oct  
  Uploads:
-- Milestone 4: **baseline_pricing_engine.ipynb** → Calculates baseline revenue from rule based on time and inventory, defines KPI  
+- Milestone 4: **baseline_pricing_engine.ipynb** → Calculates baseline revenue from rule based on time and inventory, defines KPI
+
+Date: 5th Nov  
+ Uploads:
+- Milestone 5: **model_training_and_backtesting.ipynb** → XGBoost & LightGBM model training, backtesting, and simulated revenue lift evaluation 
 ---
 
 ## 📊 Key KPIs

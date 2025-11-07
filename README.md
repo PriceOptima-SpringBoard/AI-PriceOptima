@@ -133,8 +133,11 @@ Languages & Libraries:Python · Pandas · NumPy · Matplotlib · Seaborn · Scik
 Development Environment: Jupyter Notebook, VS Code
 
 👩‍💻 About the Developer
+
 Developed by: K.Priyanka
 
 🏷️ Repository Details
+
 Branch: AI_Price_Optima_PRIYANKA
+
 Status: 🚧 Ongoing Development

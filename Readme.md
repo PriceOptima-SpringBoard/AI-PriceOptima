@@ -76,6 +76,34 @@ This milestone establishes a rule-based dynamic pricing model to serve as a base
     * Calculates the overall `revenue_lift_pct` achieved by the rule-based model.
     * Provides a breakdown of revenue lift by `Time_of_Booking`.
 
+---
+
+## **Milestone 5: Advanced Model Development**
+
+This milestone focuses on building, tuning, and backtesting advanced regression models to predict ride costs, which are then integrated into a hybrid dynamic pricing engine.
+
+* **Data Setup:**
+    * Loads the `cleaned_dynamic_pricing.csv` dataset.
+    * Splits data into an 80% training and 20% testing set.
+* **Preprocessing Pipeline:**
+    * A `ColumnTransformer` is built to handle feature encoding.
+    * **OrdinalEncoder:** Applied to `Customer_Loyalty_Status` and `Vehicle_Type`.
+    * **OneHotEncoder:** Applied to `Location_Category` and `Time_of_Booking`.
+    * **StandardScaler:** Applied to all numeric features (e.g., `Number_of_Riders`, `Expected_Ride_Duration`).
+* **XGBoost Model:**
+    * An initial `XGBRegressor` is built into a `Pipeline` and trained.
+    * `GridSearchCV` is used to tune hyperparameters (e.g., `n_estimators`, `learning_rate`, `max_depth`).
+    * The best model achieves a test **R2 of 0.8657** and **MAE of 52.9351**.
+* **LightGBM Model:**
+    * An `LGBMRegressor` pipeline is also built and tuned using `GridSearchCV`.
+    * The best model achieves a test **R2 of 0.8631** and **MAE of 53.3944**.
+* **Backtesting (Hybrid Engine):**
+    * A hybrid pricing strategy is tested on the 20% test set.
+    * The best ML model (XGBoost or LGBM) predicts a `ml_base_price`.
+    * The *same* rule-based multipliers (`time_mult`, `inv_mult`) from Milestone 4 are applied to this new ML base price to create a final `ml_dyn_price`.
+    * Revenue is then simulated using an elasticity parameter (e.g., -0.5).
+    * **Result:** The **XGB Hybrid Model** achieved the **simulated revenue lift of 8.72%** over the **static base revenue lift of 8.43%**.
+    ** The **LightGBM Hybrid Model** achieved the highest **simulated revenue lift of 8.89%** over the **static base revenue lift of 8.43%**.
 
 
 

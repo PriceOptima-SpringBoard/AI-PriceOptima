@@ -103,7 +103,7 @@ This milestone focuses on building, tuning, and backtesting advanced regression 
     * The *same* rule-based multipliers (`time_mult`, `inv_mult`) from Milestone 4 are applied to this new ML base price to create a final `ml_dyn_price`.
     * Revenue is then simulated using an elasticity parameter (e.g., -0.5).
     * **Result:** The **XGB Hybrid Model** achieved the **simulated revenue lift of 8.72%** over the **static base revenue lift of 8.43%**.
-    ** The **LightGBM Hybrid Model** achieved the highest **simulated revenue lift of 8.89%** over the **static base revenue lift of 8.43%**.
+    The **LightGBM Hybrid Model** achieved the highest **simulated revenue lift of 8.89%** over the **static base revenue lift of 8.43%**.
 
 
 

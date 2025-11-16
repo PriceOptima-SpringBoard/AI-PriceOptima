@@ -1,0 +1,27 @@
+.app-container {
+  width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  padding: 20px;
+  background: #f9f9f9;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.form-grid input {
+  width: 45%;
+  margin: 5px;
+  padding: 10px;
+}
+
+button {
+  padding: 12px 20px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}

@@ -1,24 +1,26 @@
 import React from "react";
-import MetricsDisplay from "./components/MetricsDisplay";
-import LivePredictionForm from "./components/LivePredictionForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Layout from "./components/Layout";
 import RevenueSimulation from "./components/RevenueSimulation";
+import LivePredictionForm from "./components/LivePredictionForm";
+import MetricsDisplay from "./components/MetricsDisplay";
+import PriceOptimaDashboard from "./pages/Dashboard";  // <-- added import
 
-function App() {
+const App = () => {
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl p-8">
-        <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-10">
-          AI PriceOptima Dashboard
-        </h1>
-
-        <div className="grid gap-8">
-          <MetricsDisplay />
-          <LivePredictionForm />
-          <RevenueSimulation />
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<PriceOptimaDashboard />} />
+          <Route path="/simulation" element={<RevenueSimulation />} />
+          <Route path="/prediction" element={<LivePredictionForm />} />
+          <Route path="/metrics" element={<MetricsDisplay />} />
+          <Route path="/dashboard" element={<PriceOptimaDashboard />} />  {/* <-- added route */}
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

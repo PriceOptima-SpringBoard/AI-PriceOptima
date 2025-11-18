@@ -5,6 +5,7 @@ import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip,
   CartesianGrid, Legend
 } from "recharts";
+import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const RevenueSimulation = () => {
   const [rides, setRides] = useState([
@@ -22,6 +23,29 @@ const RevenueSimulation = () => {
   ]);
 
   const [results, setResults] = useState(null);
+
+  // Add a new empty ride
+  const addRide = () => {
+    setRides((prev) => [
+      ...prev,
+      {
+        ride_distance: 0,
+        ride_duration: 0,
+        day_of_week: "",
+        time_of_day: "",
+        traffic_level: "",
+        surge_factor: 1,
+        weather_condition: "",
+        base_fare: 0,
+        vehicle_type: "",
+      },
+    ]);
+  };
+
+  // Delete ride at index
+  const deleteRide = (index) => {
+    setRides((prev) => prev.filter((_, i) => i !== index));
+  };
 
   // Update ride values
   const updateRide = (index, field, value) => {
@@ -47,17 +71,37 @@ const RevenueSimulation = () => {
 
   return (
     <div className="p-6 bg-white rounded-xl shadow-md mt-6">
-      <h2 className="text-3xl font-bold text-blue-700 mb-6">Revenue Simulation</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-blue-700">Revenue Simulation</h2>
+        <button
+          onClick={addRide}
+          className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+          aria-label="Add Ride"
+        >
+          <PlusIcon className="h-5 w-5" />
+          Add Ride
+        </button>
+      </div>
 
       {/* Ride Input Fields */}
       {rides.map((ride, index) => (
         <div
           key={index}
-          className="p-5 bg-gray-50 rounded-lg shadow-sm border mb-6"
+          className="p-5 bg-gray-50 rounded-lg shadow-sm border mb-6 relative"
         >
           <h4 className="text-xl font-semibold mb-4 text-gray-700">
             Ride {index + 1}
           </h4>
+
+          {/* Delete Ride Button */}
+          <button
+            onClick={() => deleteRide(index)}
+            className="absolute top-3 right-3 text-red-600 hover:text-red-800"
+            aria-label={`Delete Ride ${index + 1}`}
+            title={`Delete Ride ${index + 1}`}
+          >
+            <TrashIcon className="h-6 w-6" />
+          </button>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {Object.keys(ride).map((field) => (
@@ -89,7 +133,6 @@ const RevenueSimulation = () => {
       {/* ================================= RESULTS ================================= */}
       {results && (
         <div className="mt-10">
-
           {/* Revenue Summary */}
           <h3 className="text-2xl font-bold text-gray-800 mb-4">Revenue Summary</h3>
 

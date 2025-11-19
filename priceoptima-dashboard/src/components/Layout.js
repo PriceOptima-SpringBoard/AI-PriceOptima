@@ -1,97 +1,56 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 const Layout = ({ children }) => {
-  const [open, setOpen] = useState(true);
   const [dark, setDark] = useState(false);
 
-  const toggleSidebar = () => setOpen(!open);
   const toggleTheme = () => {
     setDark(!dark);
     document.documentElement.classList.toggle("dark");
   };
 
   return (
-    <div className={`flex min-h-screen bg-gray-100 dark:bg-gray-900`}>
-      
-      {/* Sidebar */}
-      <div
-        className={`${
-          open ? "w-64" : "w-16"
-        } bg-white dark:bg-gray-800 shadow-xl transition-all duration-300`}
-      >
-        <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h1 className={`text-xl font-bold dark:text-white ${open ? "block" : "hidden"}`}>
-            PriceOptima
-          </h1>
-          <button onClick={toggleSidebar} className="text-xl dark:text-white">
-            {open ? <FiX /> : <FiMenu />}
-          </button>
-        </div>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
 
-        {/* Navigation Items */}
-        <nav className="mt-4">
-          <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+      {/* ===== FIXED NAVBAR ===== */}
+      <header className="fixed top-0 left-0 w-full z-50 
+        bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700
+        px-6 py-6 flex items-center justify-between">
 
-            <li>
-              <Link
-                to="/"
-                className="block px-4 py-2 hover:bg-blue-500 hover:text-white rounded-lg transition"
-              >
-                Dashboard
-              </Link>
-            </li>
+        {/* Left: Title */}
+        <h2 className="text-xl font-bold dark:text-white">AI PriceOptima Dashboard</h2>
 
-            <li>
-              <Link
-                to="/simulation"
-                className="block px-4 py-2 hover:bg-blue-500 hover:text-white rounded-lg transition"
-              >
-                Revenue Simulation
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/prediction"
-                className="block px-4 py-2 hover:bg-blue-500 hover:text-white rounded-lg transition"
-              >
-                Live Prediction
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/metrics"
-                className="block px-4 py-2 hover:bg-blue-500 hover:text-white rounded-lg transition"
-              >
-                Model Metrics
-              </Link>
-            </li>
-
-          </ul>
+        {/* Center: Navigation Menu */}
+        <nav className="flex space-x-10 text-gray-700 dark:text-gray-100 font-medium">
+          <Link to="/" className="hover:text-blue-500">Dashboard</Link>
+          <Link to="/simulation" className="hover:text-blue-500">Revenue Simulation</Link>
+          <Link to="/prediction" className="hover:text-blue-500">Live Prediction</Link>
+          <Link to="/metrics" className="hover:text-blue-500">Model Metrics</Link>
         </nav>
-      </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+        {/* Right: Dark Mode Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full text-xl"
+        >
+          {dark ? <FiSun className="text-yellow-400" /> : <FiMoon className="text-gray-800" />}
+        </button>
+      </header>
 
-        {/* Top Navbar */}
-        <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-gray-800 shadow-md">
-          <h2 className="text-xl font-semibold dark:text-white">AI PriceOptima Dashboard</h2>
+      {/* ===== SCROLLABLE PAGE CONTENT ===== */}
+      <main className="flex-1 px-6 py-8 mt-24 mb-20 overflow-y-auto">
+        {children}
+      </main>
 
-          <button
-            onClick={toggleTheme}
-            className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full text-xl"
-          >
-            {dark ? <FiSun className="text-yellow-400" /> : <FiMoon className="text-gray-800" />}
-          </button>
-        </header>
+      {/* ===== FIXED FOOTER ===== */}
+      <footer className="fixed bottom-0 left-0 w-full z-50 
+        bg-white dark:bg-gray-800 shadow-inner 
+        text-center py-3 text-gray-700 dark:text-gray-300 text-sm border-t border-gray-200 dark:border-gray-700">
 
-        {/* Page Content */}
-        <main className="p-8">{children}</main>
-      </div>
+        © {new Date().getFullYear()} PriceOptima — All Rights Reserved
+      </footer>
+
     </div>
   );
 };

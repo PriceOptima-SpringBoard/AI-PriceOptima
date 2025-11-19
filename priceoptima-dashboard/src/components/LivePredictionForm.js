@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { api } from "../api"; // Your axios instance or however you call your API
+import { api } from "../api";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const emptyRide = {
@@ -35,13 +35,12 @@ const LivePredictionForm = () => {
     setRides(updated);
   };
 
-  // New submit handler: send each ride individually and collect results
   const handleSubmit = async () => {
     try {
-      const promises = rides.map((ride) => api.post("/predict_price", ride));
-      const responses = await Promise.all(promises);
-      const allResults = responses.map((res) => res.data);
-      setResult(allResults);
+      const responses = await Promise.all(
+        rides.map((ride) => api.post("/predict_price", ride))
+      );
+      setResult(responses.map((res) => res.data));
     } catch (err) {
       console.error(err);
       alert("Prediction failed! Check backend.");
@@ -52,10 +51,10 @@ const LivePredictionForm = () => {
     <div className="p-6 bg-white rounded-xl shadow-md mt-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold text-blue-700">Live Price Prediction</h2>
+
         <button
           onClick={addRide}
           className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
-          aria-label="Add Ride"
         >
           <PlusIcon className="h-5 w-5" />
           Add Ride
@@ -73,8 +72,6 @@ const LivePredictionForm = () => {
             <button
               onClick={() => deleteRide(index)}
               className="absolute top-3 right-3 text-red-600 hover:text-red-800"
-              aria-label={`Delete Ride ${index + 1}`}
-              title={`Delete Ride ${index + 1}`}
             >
               <TrashIcon className="h-6 w-6" />
             </button>
@@ -95,7 +92,12 @@ const LivePredictionForm = () => {
                     ? "number"
                     : "text"
                   }
-                  className="border p-2 rounded-lg bg-white focus:ring-2 focus:ring-blue-400"
+                  className="
+                    border p-2 rounded-lg 
+                    bg-white text-gray-900 
+                    dark:text-black dark:border-gray-600 
+                    focus:ring-2 focus:ring-blue-400
+                  "
                 />
               </div>
             ))}
@@ -110,7 +112,6 @@ const LivePredictionForm = () => {
         Predict Price
       </button>
 
-      {/* Display all prediction results */}
       {result && (
         <div className="mt-10">
           <h3 className="text-2xl font-bold text-gray-800 mb-4">Prediction Summary</h3>
@@ -119,23 +120,52 @@ const LivePredictionForm = () => {
             {result.map((pred, i) => (
               <div key={i} className="bg-gray-100 p-4 rounded-lg shadow">
                 <h4 className="font-semibold mb-2 text-gray-700">Ride {i + 1}</h4>
+
                 <p className="text-gray-500">XGBoost Prediction</p>
                 <p className="text-xl font-semibold text-blue-600">
-                  ₹{pred.ensemble_predicted_price ? pred.ensemble_predicted_price.toFixed(2) : "N/A"}
+                  ₹{pred.ensemble_predicted_price?.toFixed(2) ?? "N/A"}
                 </p>
 
                 <p className="text-gray-500 mt-3">LightGBM Prediction</p>
                 <p className="text-xl font-semibold text-green-600">
-                  ₹{pred.predicted_price_lgb ? pred.predicted_price_lgb.toFixed(2) : "N/A"}
+                  ₹{pred.predicted_price_lgb?.toFixed(2) ?? "N/A"}
                 </p>
 
                 <p className="text-gray-500 mt-3">Ensemble Prediction</p>
                 <p className="text-xl font-semibold text-orange-600">
-                  ₹{pred.ensemble_predicted_price ? pred.ensemble_predicted_price.toFixed(2) : "N/A"}
+                  ₹{pred.ensemble_predicted_price?.toFixed(2) ?? "N/A"}
                 </p>
               </div>
             ))}
           </div>
+
+          {/* SAME TABLE STYLING AS REVENUE SIMULATION */}
+          <h3 className="text-xl font-semibold mt-10 mb-3 text-gray-700">
+            Ride Prediction Table
+          </h3>
+
+          <table className="w-full border border-gray-400 mt-3 bg-white">
+            <thead className="bg-gray-300 text-black border-b border-gray-400">
+              <tr>
+                <th className="p-2 border border-gray-400 text-black">Ride</th>
+                <th className="p-2 border border-gray-400 text-black">XGB</th>
+                <th className="p-2 border border-gray-400 text-black">LGB</th>
+                <th className="p-2 border border-gray-400 text-black">Ensemble</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {result.map((pred, i) => (
+                <tr key={i} className="text-center bg-white text-black border border-gray-400">
+                  <td className="p-2 border border-gray-400">{i + 1}</td>
+                  <td className="p-2 border border-gray-400">{pred.predicted_price_xgb}</td>
+                  <td className="p-2 border border-gray-400">{pred.predicted_price_lgb}</td>
+                  <td className="p-2 border border-gray-400">{pred.ensemble_predicted_price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
         </div>
       )}
     </div>

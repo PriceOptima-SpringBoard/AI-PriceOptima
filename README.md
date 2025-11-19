@@ -62,7 +62,9 @@ Date:19th nov
 ## 🤖 Milestone 5 --- Advanced Model Development
 
 ✔ Implemented **LightGBM + XGBoost optimized models**
+
 ✔ Performed **time-sorted historical backtesting**
+
 ✔ Added:
 
 -   Calibration
@@ -76,6 +78,7 @@ Date:19th nov
 -   `backtest_xgb_model.joblib`
 
 ✔ Exported full prediction report CSVs\
+
 ✔ Achieved stable **backtest RMSE** & **positive revenue uplift**
 
 📁 *File:* `advance model developement5.ipynb`
@@ -104,7 +107,9 @@ Date:19th nov
 ## Docker Deployment Status
 
 ✔ FastAPI running inside Docker
+
 ✔ React served via development server
+
 ✔ Both connected successfully
 
 📁 *File:* `frontend.zip` (React App)

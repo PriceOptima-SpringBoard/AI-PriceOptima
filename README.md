@@ -61,22 +61,23 @@ Date:19th nov
 *uploads*
 ## 🤖 Milestone 5 --- Advanced Model Development
 
-✔ Implemented **LightGBM + XGBoost optimized models**\
-✔ Performed **time-sorted historical backtesting**\
+✔ Implemented **LightGBM + XGBoost optimized models**
+✔ Performed **time-sorted historical backtesting**
 ✔ Added:
 
--   Calibration\
--   Market uplift adjustments\
--   Rolling windows\
+-   Calibration
+-   Market uplift adjustments
+-   Rolling windows
 -   Smoothing layers
 
 ✔ Saved production-ready models:
 
--   `backtest_lgbm_model.joblib`\
+-   `backtest_lgbm_model.joblib`
 -   `backtest_xgb_model.joblib`
 
 ✔ Exported full prediction report CSVs\
 ✔ Achieved stable **backtest RMSE** & **positive revenue uplift**
+
 📁 *File:* `advance model developement5.ipynb`
 
 ---
@@ -86,25 +87,26 @@ Date:19th nov
 
 ### Backend --- FastAPI
 
--   Created **/predict** endpoint\
--   Built reusable **input schema**\
--   Loaded optimized model & feature columns\
--   Containerized using **Docker**\
+-   Created **/predict** endpoint
+-   Built reusable **input schema**
+-   Loaded optimized model & feature columns
+-   Containerized using **Docker**
 -   Verified via **Swagger UI**
 
 ### Frontend --- React Dashboard
 
--   Built responsive prediction UI\
--   Displays **predicted price** and **request status**\
--   Includes form-based input for all model features\
--   Connected backend using **Axios**\
+-   Built responsive prediction UI
+-   Displays **predicted price** and **request status**
+-   Includes form-based input for all model features
+-   Connected backend using **Axios**
 -   Fully tested end-to-end prediction flow
 
 ## Docker Deployment Status
 
-✔ FastAPI running inside Docker\
-✔ React served via development server\
+✔ FastAPI running inside Docker
+✔ React served via development server
 ✔ Both connected successfully
+
 📁 *File:* `frontend.zip` (React App)
 
 ----
@@ -112,12 +114,12 @@ Date:19th nov
 - Languages & Libraries:Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn 
 - Development Environment: Jupyter Notebook, VS Code
 ### Backend
--   FastAPI\
--   Uvicorn\
+-   FastAPI
+-   Uvicorn
 -   Docker
 ### Frontend
--   React.js\
--   Axios\
+-   React.js
+-   Axios
 -   CSS
 
 

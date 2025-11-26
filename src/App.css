@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   THEME TOKENS – LIGHT MODE
+   ========================= */
+:root {
+  --bg-primary: #f3f4f6;
+  --bg-secondary: #e5e7eb;
+  --bg-card: #ffffff;
+
+  --text-primary: #020617;
+  --text-secondary: #4b5563;
+
+  --border-color: rgba(15, 23, 42, 0.08);
+
+  --accent-blue: #6366f1;
+  --accent-green: #22c55e;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* =========================
+   THEME TOKENS – DARK MODE
+   ========================= */
+.dark {
+  --bg-primary: #020617;
+  --bg-secondary: #020617;
+  --bg-card: #020617;
+
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+
+  --border-color: rgba(148, 163, 184, 0.35);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* =========================
+   GLOBAL BACKGROUND + FONT
+   ========================= */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-.App-header {
-  background-color: #282c34;
+/* Smooth gradient behind whole app */
+#root {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: linear-gradient(to bottom, #020617, #020617, #0a0c14);
 }
 
-.App-link {
-  color: #61dafb;
+/* =================================================
+   FIX 1: PERFECTLY CENTER HOME CONTENT BETWEEN BLUE LINES
+   ================================================= */
+.container {
+  max-width: 1250px !important; 
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left:38px !important;   /* more space left */
+  padding-right:38px !important;  /* more space right */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* =================================================
+   FIX 2: ADD EXTRA SPACING BETWEEN HOME SECTIONS
+   ================================================= */
+.container > div > .max-w-6xl.mx-auto > * + * {
+  margin-top: 26px !important;
+}
+
+/* =================================================
+   FIX 3: BAR CHART – REMOVE PILL ROUNDED ENDS
+   ================================================= */
+
+/* Outer bar wrapper */
+.container .relative.flex.items-end.gap-3.h-32 
+  > .flex-1.flex.flex-col.items-center.gap-2 
+  > div.w-8,
+.container .relative.flex.items-end.gap-3.h-32 
+  > .flex-1.flex.flex-col.items-center.gap-2 
+  > div.w-9 {
+  border-radius: 6px !important;      /* slight radius, NOT round */
+  overflow: hidden !important;
+}
+
+/* Inner colored bars */
+.container .relative.flex.items-end.gap-3.h-32 
+  > .flex-1.flex.flex-col.items-center.gap-2 
+  > div > div.w-full {
+  border-radius: 4px !important;
+  min-height: 18px !important;        /* ensures bars remain visible */
+}
+
+/* =================================================
+   FIX 4: OPTIONAL – tighten grid so cards look cleaner
+   ================================================= */
+
+@media (min-width: 1024px) {
+  .grid-cols-[1.4fr,1fr] {
+    grid-template-columns: 1fr 0.9fr !important; /* reduce right card width slightly */
+    gap: 22px !important;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* =================================================
+   OPTIONAL: NICE SCROLLBAR
+   ================================================= */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.55);
+    border-radius: 20px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.85);
   }
 }

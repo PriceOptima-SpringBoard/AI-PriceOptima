@@ -22,6 +22,7 @@ function PredictionTool() {
     Time_of_Booking: 'Morning',
     Vehicle_Type: 'Premium',
   });
+
   const [predictedPrice, setPredictedPrice] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -40,19 +41,31 @@ function PredictionTool() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8000/predict_price', formData);
+      // 🔥 FIXED URL: FastAPI runs on 127.0.0.1, NOT localhost
+      const response = await axios.post(
+        'http://127.0.0.1:8000/predict_price',
+        formData
+      );
+
       setPredictedPrice(response.data.predicted_price);
     } catch (err) {
       console.error('API Error:', err);
-      setError('Prediction failed. Ensure the FastAPI service is running at http://localhost:8000.');
+      setError(
+        'Prediction failed. Ensure the FastAPI service is running at http://127.0.0.1:8000.'
+      );
     } finally {
       setLoading(false);
     }
   };
 
-  // 3. DERIVED FEATURES (Displayed to the user)
-  const demandSupplyRatio = (formData.Number_of_Riders / (formData.Number_of_Drivers + 1)).toFixed(2);
-  const rideExperience = (formData.Number_of_Past_Rides * formData.Average_Ratings).toFixed(2);
+  // 3. DERIVED FEATURES
+  const demandSupplyRatio = (
+    formData.Number_of_Riders / (formData.Number_of_Drivers + 1)
+  ).toFixed(2);
+
+  const rideExperience = (
+    formData.Number_of_Past_Rides * formData.Average_Ratings
+  ).toFixed(2);
 
   return (
     <div className="min-h-screen p-6 lg:p-10 bg-gradient-to-br from-slate-950 via-slate-950 to-black">
@@ -106,14 +119,16 @@ function PredictionTool() {
             </h2>
             <p className="text-sm md:text-base text-slate-300/90 max-w-2xl leading-relaxed">
               Provide rider, driver, and context features to estimate a{' '}
-              <span className="font-semibold text-indigo-300">revenue-optimized dynamic price</span>{' '}
+              <span className="font-semibold text-indigo-300">
+                revenue-optimized dynamic price
+              </span>{' '}
               for the ride.
             </p>
           </div>
 
           {/* Main Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-[1.35fr,1fr] gap-5 lg:gap-6">
-            {/* === Input Form (Left Side) === */}
+            {/* === Input Form === */}
             <form
               onSubmit={handleSubmit}
               className="
@@ -121,7 +136,7 @@ function PredictionTool() {
                 bg-slate-950/85
                 border border-slate-800
                 shadow-sm
-                hover:shadow-lg hover:-translate-y-[2px]
+                hover:shadow-lg hover:-Translate-y-[2px]
                 transition-all duration-300
               "
             >
@@ -129,7 +144,8 @@ function PredictionTool() {
 
               <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
                 {Object.keys(formData).map((key) => {
-                  let type = typeof formData[key] === 'number' ? 'number' : 'select';
+                  let type =
+                    typeof formData[key] === 'number' ? 'number' : 'select';
                   let label = key.replace(/_/g, ' ');
 
                   if (
@@ -226,7 +242,7 @@ function PredictionTool() {
               </div>
             </form>
 
-            {/* === Results & Derived Features (Right Side) === */}
+            {/* === Results === */}
             <div
               className="
                 relative p-5 lg:p-6 rounded-3xl
@@ -274,7 +290,7 @@ function PredictionTool() {
                 </p>
 
                 <div className="space-y-3">
-                  {/* Demand / Supply Card + tiny bar viz */}
+                  {/* Demand / Supply */}
                   <div
                     className="
                       flex flex-col gap-1.5
@@ -295,16 +311,16 @@ function PredictionTool() {
                       <div
                         className="h-full rounded-full bg-gradient-to-r from-sky-400 via-indigo-400 to-emerald-400 transition-all duration-300"
                         style={{
-                          width: `${Math.min(Number(demandSupplyRatio) * 18, 100)}%`,
+                          width: `${Math.min(
+                            Number(demandSupplyRatio) * 18,
+                            100
+                          )}%`,
                         }}
                       />
                     </div>
-                    <p className="text-[11px] text-slate-500 mt-1">
-                      {formData.Number_of_Riders} riders / ({formData.Number_of_Drivers} drivers + 1)
-                    </p>
                   </div>
 
-                  {/* Ride Experience */}
+                  {/* Experience */}
                   <div
                     className="
                       flex flex-col gap-1.5
@@ -321,14 +337,11 @@ function PredictionTool() {
                         {rideExperience}
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-500 mt-1">
-                      {formData.Number_of_Past_Rides} rides × {formData.Average_Ratings} rating
-                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Final Prediction Box */}
+              {/* Final Prediction */}
               {predictedPrice !== null && (
                 <div
                   className="
@@ -345,17 +358,16 @@ function PredictionTool() {
                   <p className="text-3xl md:text-4xl font-black text-emerald-50 tracking-tight mb-1">
                     ₹ {predictedPrice.toLocaleString()}
                   </p>
-                  <p className="text-[11px] text-emerald-100/80">
-                    Estimated for this exact scenario, relative to the baseline engine.
-                  </p>
                 </div>
               )}
 
               {!predictedPrice && !loading && !error && (
                 <p className="relative mt-3 text-[12px] text-slate-400">
                   Fill in the inputs on the left and click{' '}
-                  <span className="font-semibold text-slate-200">“Predict Dynamic Price”</span> to
-                  view the model’s recommendation.
+                  <span className="font-semibold text-slate-200">
+                    “Predict Dynamic Price”
+                  </span>{' '}
+                  to view the model’s recommendation.
                 </p>
               )}
             </div>

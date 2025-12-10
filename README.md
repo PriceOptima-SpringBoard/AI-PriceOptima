@@ -205,7 +205,34 @@ AI-price-optima/
 
 ---
 
-## 📊 Final Results Summary
+## � Milestone 6: Model Deployment & Interactive Dashboard ✅
+
+**Objectives:**
+- Develop a full-stack web application for the pricing system
+- Build a Flask REST API to serve model predictions
+- Create an interactive React Frontend for visualization
+- Implement real-time pricing simulation
+
+**Key Achievements:**
+- ✅ **Backend API:** Built robust Flask API (`app.py`) with endpoints for predictions and KPIs
+- ✅ **Frontend Dashboard:** Developed modern React UI with Tailwind CSS
+- ✅ **Interactive Simulator:** Created a tool for users to test pricing scenarios
+- ✅ **Data Visualization:** Integrated Recharts for Revenue Trends, Demand Heatmaps, and Feature Importance
+- ✅ **UI Overhaul:** Implemented a premium Dark Theme (Slate/Emerald)
+- ✅ **Responsive Design:** Ensured full mobile and tablet compatibility
+
+**Tech Stack Added:**
+- **Backend:** Flask, Flask-CORS, Joblib
+- **Frontend:** React, Vite, Tailwind CSS, Recharts
+
+**Key Components:**
+- `app.py`: Main API entry point
+- `routes.py`: API route definitions
+- `frontend/`: Complete React application source
+
+---
+
+## �📊 Final Results Summary
 
 ### **Best Model: IMPROVED LightGBM** 🏆
 

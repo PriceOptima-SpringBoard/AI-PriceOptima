@@ -205,7 +205,7 @@ AI-price-optima/
 
 ---
 
-## � Milestone 6: Model Deployment & Interactive Dashboard ✅
+## Milestone 6: Model Deployment & Interactive Dashboard ✅
 
 **Objectives:**
 - Develop a full-stack web application for the pricing system
@@ -232,7 +232,7 @@ AI-price-optima/
 
 ---
 
-## �📊 Final Results Summary
+## 📊 Final Results Summary
 
 ### **Best Model: IMPROVED LightGBM** 🏆
 
